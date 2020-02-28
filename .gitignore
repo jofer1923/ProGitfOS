@@ -28,10 +28,15 @@ Temporary Items
 config.codekit3
 prepros.config
 # Folders
+#archivos
+*.pug
+*.scss
 # Archivos PDF
 *.PDF
 *.pdf
 *.zip
 *rtf
 *txt
+
+
 # End of https://www.gitignore.io/api/maco
