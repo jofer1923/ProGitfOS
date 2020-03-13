@@ -16,6 +16,7 @@ body {
           box-shadow: 0 1px 0 0 #110038;
   font-family: "Chakra Petch", sans-serif;
   font-weight: 400;
+  margin-top: 0;
 }
 
 .crear {
@@ -28,6 +29,7 @@ body {
   border: solid 1px #110038;
   -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+  margin-right: 16px;
 }
 
 .crear:hover {
@@ -41,22 +43,24 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-right: 16.5px;
 }
 
 .contenedor__nav__temas p {
   background: #F7C9F3;
   color: #110038;
-  padding: 9px 26.5px;
+  padding: 10px 15.5px;
   margin: 0;
   font-family: "Chakra Petch", sans-serif;
   font-weight: 400;
   border: solid 1px #110038;
   -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
-  width: 167px;
+  width: 131px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-align: center;
 }
 
 .contenedor__nav__temas img {
@@ -100,7 +104,6 @@ body {
 }
 
 .contenedor__nav:hover ul, ul:hover {
-  display: block;
   position: absolute;
   font-family: "Chakra Petch", sans-serif;
   font-weight: 400;
@@ -108,6 +111,10 @@ body {
   background-color: #E6E6E6;
   -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
           box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+}
+
+.desplegar:hover ul, ul:hover {
+  display: block;
 }
 
 .contenedor__nav li {
@@ -132,4 +139,49 @@ body {
 
 .contenedor__nav li:hover::first-letter {
   text-decoration: underline;
+}
+
+.misguifos {
+  text-decoration: none;
+  color: #110038;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 400;
+  padding: 8px 15px 8px 0;
+}
+
+.misguifos::first-letter {
+  text-decoration: underline;
+}
+
+.misguifos:hover {
+  border: 1px #110038;
+  border-style: dashed;
+  border-width: 0.1px;
+}
+
+.misguifos:active {
+  color: #110038;
+  opacity: 50%;
+}
+
+.header__contenedor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 44px 70.25px 0 70.25px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__contenedor .contenedor__botones {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
