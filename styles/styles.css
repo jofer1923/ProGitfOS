@@ -11,7 +11,7 @@ body {
   font-size: 0.9rem;
   background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
   background-image: linear-gradient(to left, #F7C9F3, #4180F6);
-  padding: 3px 0 4px 0;
+  padding: 3px 0 4px 7px;
   -webkit-box-shadow: 0 1px 0 0 #110038;
           box-shadow: 0 1px 0 0 #110038;
   font-family: "Chakra Petch", sans-serif;
@@ -30,26 +30,20 @@ body {
   -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
   margin-right: 16px;
+  justify-self: flex-end;
 }
 
 .crear:hover {
-  outline: dashed;
+  outline-style: dotted;
   outline-width: 0.1px;
   outline-offset: -4px;
   background-color: #E6BBE2;
 }
 
-.contenedor__nav__temas {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-right: 16.5px;
-}
-
 .contenedor__nav__temas p {
   background: #F7C9F3;
   color: #110038;
-  padding: 10px 15.5px;
+  padding: 9px 15.5px;
   margin: 0;
   font-family: "Chakra Petch", sans-serif;
   font-weight: 400;
@@ -77,7 +71,6 @@ body {
 .contenedor__nav {
   display: inline-block;
   position: relative;
-  z-index: 3;
 }
 
 .contenedor__nav ul {
@@ -103,7 +96,11 @@ body {
   background-color: #E6BBE2;
 }
 
-.contenedor__nav:hover ul, ul:hover {
+.desplegar ul {
+  display: block;
+}
+
+ul {
   position: absolute;
   font-family: "Chakra Petch", sans-serif;
   font-weight: 400;
@@ -113,17 +110,14 @@ body {
           box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
 
-.desplegar:hover ul, ul:hover {
-  display: block;
-}
-
 .contenedor__nav li {
-  margin: 0 0 5px 0;
+  margin: 0;
   padding: 7px 0 7px 16px;
   background: #F0F0F0;
-  border: 1px solid #B4B4B4;
+  border: 1px solid #808080;
   -webkit-box-shadow: inset -1px -1px 0 0 #B4B4B4 inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #B4B4B4 inset 1px 1px 0 0 #FFFFFF;
+  cursor: pointer;
 }
 
 .contenedor__nav li:first-child {
@@ -154,20 +148,14 @@ body {
 }
 
 .misguifos:hover {
-  border: 1px #110038;
-  border-style: dashed;
-  border-width: 0.1px;
+  border-color: #110038;
+  border-style: dotted;
+  border-width: 1px;
 }
 
 .misguifos:active {
   color: #110038;
   opacity: 50%;
-}
-
-.busqueda {
-  background: #E6E6E6;
-  -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
-          box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
 
 .busqueda__titulo {
@@ -178,10 +166,18 @@ body {
   font-weight: 600;
   font-size: 0.875rem;
   padding: 3px;
+  -webkit-box-shadow: inset -2px 0 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px 0 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
 
 .busqueda__form {
   padding: 0px 18px 12px 15px;
+}
+
+.busqueda {
+  background-color: #E6E6E6;
+  -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
 }
 
 .busqueda input:first-child {
@@ -218,6 +214,13 @@ body {
           box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
   padding: 9px 14px 9px 10px;
   font-family: "Chakra Petch", sans-serif;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-left: 3px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .busqueda label input {
@@ -256,4 +259,11 @@ body {
   width: 90%;
   margin: 0 auto;
   margin-top: 30px;
+}
+
+.contenedor__nav__temas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 16.5px;
 }
