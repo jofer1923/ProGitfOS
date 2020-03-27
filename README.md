@@ -1,2 +1,2 @@
-# ProGitfOS
-Proyecto Gitfos personal para almacenar info del proyecto a manera personal
+# acamica-gifos
+Proyecto para realizar el proyecto de una página que se conecto a la API de Gifos e imprima los resultados de búsqueda ingresados.
