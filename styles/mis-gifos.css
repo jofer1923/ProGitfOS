@@ -119,12 +119,12 @@ body {
 }
 
 .nivel-2 {
-  width: 598px;
+  width: 632px;
   position: relative;
 }
 
 .nivel-1 {
-  width: 290px;
+  width: 300px;
   position: relative;
 }
 
@@ -172,8 +172,8 @@ body {
 .mis--gifs__contenedor {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (290px)[4];
-      grid-template-columns: repeat(4, 290px);
+  -ms-grid-columns: (300px)[4];
+      grid-template-columns: repeat(4, 300px);
   grid-gap: 16px 16px;
   -webkit-box-align: center;
       -ms-flex-align: center;
