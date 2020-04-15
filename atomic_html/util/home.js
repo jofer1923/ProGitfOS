@@ -390,5 +390,6 @@ function enviarOpcionesBusqueda(posicion) {
     mostar_opciones_texto[i].textContent = opciones[i].value;
     console.log(mostar_opciones_texto[i]);
     mostar_opciones.classList.toggle("mostarOpcionesBlock");
+    mostar_opciones.classList.remove("mostarOpciones");
   }
 }
