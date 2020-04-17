@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../../styles/mis-gifos.css">
     <link id="temas2" rel="stylesheet" href="../../../styles/mis-gifos_normal.css">
   </head>
-  <body>
+  <body onload="mostrar_mis_gif_creados()">
     <header class="header">
       <div class="header__contador">
         <p>¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están./////// Número de visitas: 12.765.803</p>
@@ -44,18 +44,18 @@
         <video id="grabar_camara"></video><img id="reproducir_gif">
       </div>
       <div class="contenedor_capturar" id="contenedor_capturar">
-        <div class="mostrar_camara_icono" id="mostrar_camara_icono"> </div>
+        <div class="mostrar_camara_icono" id="mostrar_camara_icono"></div>
         <p class="mostrar_camara_capturar" id="mostrar_camara_capturar"></p>
       </div>
       <div class="contenedor_capturar_listo" id="contenedor_capturar_listo">
-        <div class="mostrar_camara_icono_listo" id="mostrar_camara_icono_listo"> </div>
-        <p class="mostrar_camara_capturar_listo" id="mostrar_camara_capturar_listo">listo</p>
+        <div class="mostrar_camara_icono_listo" id="mostrar_camara_icono_listo"></div>
+        <p class="mostrar_camara_capturar_listo" id="mostrar_camara_capturar_listo">Listo</p>
       </div>
-      <div class="contenedor_finalizar_botones" id="contenedor_finalizar_botones">  
-        <div class="contenedor_reproducir_gif" id="contenedor_reproducir_gif"><img src="../../assets/forward.svg" alt="Boton reproducir" id="reproducir_gif_img"></div>
+      <div class="contenedor_finalizar_botones" id="contenedor_finalizar_botones">
+        <div class="contenedor_reproducir_gif" id="contenedor_reproducir_gif"><img src="../../assets/forward.svg" alt="Botón de reproducir" id="reproducir_gif_img"></div>
         <div class="contenedor_repetir_enviar">
-          <p class="contenedor_finalizar_repetir" id="contenedor_finalizar_repetir">Repetir Captura</p>
-          <p class="contenedor_finalizar_subir" id="contenedor_finalizar_subir">Subir guifo  </p>
+          <p class="contenedor_finalizar_repetir" id="contenedor_finalizar_repetir"> Repetir Captura</p>
+          <p class="contenedor_finalizar_subir" id="contenedor_finalizar_subir">Subir guifo</p>
         </div>
       </div>
       <p class="mostrar_camara_reloj" id="mostrar_camara_reloj">00:00:03:06</p>
@@ -63,62 +63,11 @@
     </section>
     <section class="mis--gifs">
       <h3>Mis guifos</h3>
-      <div class="mis--gifs__contenedor">
-        <div class="gif__contenedor--1">
-          <div class="tendencia__gif__container"><img class="288X298.jpg img--gif--tendencias" alt="gifs tendencias"/>
-            <p class="gif--titulo--tendencia"></p>
-          </div>
-        </div>
-        <div class="gif__contenedor--1">
-          <div class="tendencia__gif__container"><img class="288X298.jpg img--gif--tendencias" alt="gifs tendencias"/>
-            <p class="gif--titulo--tendencia"></p>
-          </div>
-        </div>
-        <div class="gif__contenedor--1">
-          <div class="tendencia__gif__container"><img class="288X298.jpg img--gif--tendencias" alt="gifs tendencias"/>
-            <p class="gif--titulo--tendencia"></p>
-          </div>
-        </div>
-        <div class="gif__contenedor--1">
-          <div class="tendencia__gif__container"><img class="288X298.jpg img--gif--tendencias" alt="gifs tendencias"/>
-            <p class="gif--titulo--tendencia"></p>
-          </div>
-        </div>
-        <div class="gif__contenedor--2">
-          <div class="tendencia__gif__container"><img class="592X298.jpg img--gif--tendencias" alt="gifs tendencias"/>
-            <p class="gif--titulo--tendencia"></p>
-          </div>
-        </div>
-        <div class="gif__contenedor--1">
-          <div class="tendencia__gif__container"><img class="288X298.jpg img--gif--tendencias" alt="gifs tendencias"/>
-            <p class="gif--titulo--tendencia"></p>
-          </div>
-        </div>
-        <div class="gif__contenedor--1">
-          <div class="tendencia__gif__container"><img class="288X298.jpg img--gif--tendencias" alt="gifs tendencias"/>
-            <p class="gif--titulo--tendencia"></p>
-          </div>
-        </div>
-        <div class="gif__contenedor--1">
-          <div class="tendencia__gif__container"><img class="288X298.jpg img--gif--tendencias" alt="gifs tendencias"/>
-            <p class="gif--titulo--tendencia"></p>
-          </div>
-        </div>
-        <div class="gif__contenedor--1">
-          <div class="tendencia__gif__container"><img class="288X298.jpg img--gif--tendencias" alt="gifs tendencias"/>
-            <p class="gif--titulo--tendencia"></p>
-          </div>
-        </div>
-        <div class="gif__contenedor--2">
-          <div class="tendencia__gif__container"><img class="592X298.jpg img--gif--tendencias" alt="gifs tendencias"/>
-            <p class="gif--titulo--tendencia"></p>
-          </div>
-        </div>
-      </div>
+      <div class="mis--gifs__contenedor" id="mis--gifs__contenedor"></div>
     </section>
     <script src="../../util/index.js"></script>
     <script src="../../util/home.js"></script>
-    <script src="../../util/mis_guifos.js"></script>
+    <script src="../..//util/mis_guifos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.8/RecordRTC.js"></script>
   </body>
 </html>

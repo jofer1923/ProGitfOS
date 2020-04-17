@@ -5,13 +5,16 @@ let video = document.getElementById("grabar_camara");
 let reproducir_gif = document.getElementById("reproducir_gif");
 let finalizar_botones = document.getElementById("contenedor_finalizar_botones");
 let capturar = document.getElementById("mostrar_camara_capturar");
-capturar.textContent = "Capturar";
 let contenedor_capturar = document.getElementById("contenedor_capturar");
 let subir_gif = document.getElementById("contenedor_finalizar_subir");
 let repetir_captura = document.getElementById("contenedor_finalizar_repetir");
 let reproducir_gif_img = document.getElementById("reproducir_gif_img");
+let mis_gifs = document.getElementsByClassName("img--gif");
+let mis_gifs_contenedor = document.getElementById("mis--gifs__contenedor");
+
 ////////////////////////////
-/* METODO POST A GIPHY */
+
+/* CLASE GIFPHY CON FUNCIONES PARA ENVIAR EL GIF */
 class giphy {
   async obtener(apiKey, formaData) {
     let cors = { method: "POST", body: formaData, json: true };
@@ -19,58 +22,56 @@ class giphy {
       `https://upload.giphy.com/v1/gifs?api_key=${apiKey}`,
       cors
     );
+
     return respuestaApi;
   }
   async postear(URL, parametros) {
     let datos = await fetch(URL, parametros);
     let respuesta = await datos.json();
+
     return respuesta;
-  }
-  async getGifById(id) {
-    let obtenId = await fetch(
-      `https://api.giphy.com/v1/gifs/${id}?api_key=ZsyimjTGoeAs3gjOJLqCRkHfccc4tcEv`
-    );
-    let obtenResId = await obtenId.json();
-    return { obtenResId };
   }
 }
 ///////////////////
+
+// CÓDIGO PRINCIPAL
+
+capturar.textContent = "Capturar";
 contenedor_listo.style.display = "none";
 finalizar_botones.style.display = "none";
+
+/* INICIAR LA GRABACIÓN DE LA CAMÁRA */
 capturar.addEventListener("click", () => {
-  videoGenerate();
+  crear_gifs();
   capturar.textContent = "Creando Guifo";
+
   setTimeout(() => {
     contenedor_capturar.style.display = "none";
     contenedor_listo.style.display = "";
-  }, 5000);
-  listo.addEventListener("click", () => {
-    contenedor_listo.style.display = "none";
-    finalizar_botones.style.display = "";
-  });
+  }, 1000);
 });
+///////////////////
+
 repetir_captura.addEventListener("click", () => {
-  videoGenerate();
+  crear_gifs();
   finalizar_botones.style.display = "none";
   contenedor_capturar.style.display = "";
   video.style.display = "";
   reproducir_gif.style.display = "";
   capturar.textContent = "Creando Guifo";
+
   setTimeout(() => {
     contenedor_capturar.style.display = "none";
     contenedor_listo.style.display = "";
-  }, 5000);
-  listo.addEventListener("click", () => {
-    contenedor_listo.style.display = "none";
-    finalizar_botones.style.display = "";
-  });
+  }, 1000);
 });
-function videoGenerate() {
+
+function crear_gifs() {
   navigator.mediaDevices
     .getUserMedia({
       video: { height: { max: 480 } },
-      // audio: false
     })
+
     .then(async function (stream) {
       video.srcObject = stream;
       video.play();
@@ -85,36 +86,30 @@ function videoGenerate() {
           console.log("started");
         },
       });
+
       recorder.startRecording();
       listo.addEventListener("click", () => {
         contenedor_listo.style.display = "none";
+        finalizar_botones.style.display = "";
+        /////////////////////////////////////
         recorder.stopRecording(function () {
-          let blob = recorder.getBlob(); // 1PERMITE DESCARGAR EL GIF
-          console.log("Es el blob", recorder.getBlob());
-
+          let blob = recorder.getBlob();
           video.pause();
           const tracks = stream.getTracks();
           tracks[0].stop();
           reproducir_gif_img.addEventListener("click", () => {
             video.style.display = "none";
             reproducir_gif.style.display = "block";
-            let url2 = URL.createObjectURL(blob);
-            reproducir_gif.src = url2;
+            let url = URL.createObjectURL(blob);
+            reproducir_gif.src = url;
           });
-
-          console.log("Este es tracks", tracks);
-          // TERCERA FASE -- GENERANDO ARCHIVO CAPTURA PARA SUBIR
-          video.pause();
+          /////////////////////////////////////
           let form = new FormData();
           form.append("file", recorder.getBlob(), "myGif.gif");
-          console.log(form.get("file"));
-          let url = recorder.toURL();
-          console.log("Fucking URL", url);
           subir_gif.addEventListener("click", () => {
             let inst = new giphy();
-            let key = "ZsyimjTGoeAs3gjOJLqCRkHfccc4tcEv"; //KEY OBTENIDO DE GIPHY
+            let key = "ZsyimjTGoeAs3gjOJLqCRkHfccc4tcEv";
             inst.obtener(key, form).then((resData) => {
-              console.log(resData.data.id); // IMPRIME DEL ID QUE SITUA EN EL OBJETO
               const traer_gif = fetch(
                 "https://api.giphy.com/v1/gifs/" +
                   resData.data.id +
@@ -122,19 +117,12 @@ function videoGenerate() {
                   "ZsyimjTGoeAs3gjOJLqCRkHfccc4tcEv"
               )
                 .then((response) => response.json())
-                .then((resData3) => {
-                  console.log("Otro intento mas ", resData3);
+                .then((resData) => {
                   localStorage.setItem(
-                    `GIF ${resData3.data.id}`,
-                    JSON.stringify(resData3)
+                    `GIF ${resData.data.id}`,
+                    JSON.stringify(resData)
                   );
-                  let gif_local = localStorage.getItem(
-                    `GIF ${resData3.data.id}`
-                  );
-                  console.log("Antes del parse ", gif_local);
-                  let nuevo_gif = JSON.parse(gif_local);
-                  console.log("Después del parse ", nuevo_gif);
-                  console.log(nuevo_gif.data.url);
+                  mostrar_mis_gif_creados();
                 });
               return traer_gif;
             });
@@ -143,3 +131,26 @@ function videoGenerate() {
       });
     });
 }
+//////////////////////////
+let mostrar_mis_gif_creados = () => {
+  for (let i = 0; i < localStorage.length; i++) {
+    let clave = localStorage.key(i);
+    let gif_local = localStorage.getItem(clave);
+    let nuevo_gif = JSON.parse(gif_local);
+
+    let gif_contenedor = document.createElement("div");
+    gif_contenedor.classList.add("gif__contenedor");
+
+    let div = document.createElement("div");
+
+    let img_gif = document.createElement("img");
+    img_gif.classList.add("img--gif");
+
+    div.appendChild(img_gif);
+
+    gif_contenedor.appendChild(div);
+
+    mis_gifs_contenedor.appendChild(gif_contenedor);
+    mis_gifs[i].src = nuevo_gif.data.images.downsized_large.url;
+  }
+};
