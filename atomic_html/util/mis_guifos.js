@@ -1,4 +1,6 @@
 // VARIABLES GLOBALES
+let mostrar_camara = document.getElementById("mostrar_camara");
+let camara_titulo = document.getElementById("camara_titulo");
 let contenedor_listo = document.getElementById("contenedor_capturar_listo");
 let listo = document.getElementById("mostrar_camara_capturar_listo");
 let video = document.getElementById("grabar_camara");
@@ -15,6 +17,14 @@ let contenedor_subir_gif = document.getElementById("contenedor_subir_gif");
 let subir_barra_cuadro = document.getElementsByClassName("subir_barra_cuadro");
 let contenedor_cancelar = document.getElementById("contenedor_cancelar");
 let cancelar_texto = document.getElementById("cancelar_texto");
+let finalizar_gif = document.getElementById("finalizar_gif");
+let finalizar_boton_descargar = document.getElementById(
+  "finalizar_boton_descargar"
+);
+let img_finalizar = document.getElementById("img_finalizar");
+let finalizar_listo = document.getElementById("finalizar_listo");
+let cerra_1 = document.getElementById("cerrar_1");
+let cerra_2 = document.getElementById("cerrar_2");
 ////////////////////////////
 /* CLASE GIPHY CON FUNCIONES PARA ENVIAR EL GIF */
 class giphy {
@@ -39,10 +49,13 @@ contenedor_listo.style.display = "none";
 finalizar_botones.style.display = "none";
 contenedor_subir_gif.style.display = "none";
 contenedor_cancelar.style.display = "none";
+finalizar_gif.style.display = "none";
+camara_titulo.textContent = "Un Chequeo Antes de Empezar";
 /* INICIAR LA GRABACIÓN DE LA CAMÁRA */
 capturar.addEventListener("click", () => {
   crear_gifs();
   capturar.textContent = "Creando Guifo";
+  camara_titulo.textContent = "Capturando tu Guifo";
   setTimeout(() => {
     contenedor_capturar.style.display = "none";
     contenedor_listo.style.display = "";
@@ -84,6 +97,7 @@ function crear_gifs() {
       listo.addEventListener("click", () => {
         contenedor_listo.style.display = "none";
         finalizar_botones.style.display = "";
+        camara_titulo.textContent = "Vista Previa";
         /////////////////////////////////////
         recorder.stopRecording(function () {
           let blob = recorder.getBlob();
@@ -105,6 +119,7 @@ function crear_gifs() {
             contenedor_cancelar.style.display = "";
             finalizar_botones.style.display = "none";
             reproducir_gif.style.display = "none";
+            camara_titulo.textContent = "Subiendo Guifo";
             let contador_1 = 0;
             let pintar_barra_1;
             pintar_barra_1 = setInterval(() => {
@@ -141,12 +156,33 @@ function crear_gifs() {
                     contador_2 += 1;
                     if (contador_2 == 23) {
                       clearInterval(pintar_barra_2);
-                      alert("Tu gif se termino de cargar");
+                      finalizar_gif.style.display = "";
+                      mostrar_camara.style.display = "none";
+                      img_finalizar.src =
+                        resData.data.images.downsized_large.url;
                     } else {
                       console.log("Pintando 2");
                     }
                   }, 200);
                   mostrar_mis_gif_creados();
+
+                  finalizar_boton_copiar.addEventListener("click", () => {
+                    let gif_local = localStorage.getItem(
+                      `GIF ${resData.data.id}`
+                    );
+                    let nuevo_gif = JSON.parse(gif_local);
+                    let url_copiar = document.createElement("input");
+                    document.body.appendChild(url_copiar);
+                    url_copiar.value =
+                      nuevo_gif.data.images.downsized_large.url;
+                    url_copiar.select();
+                    document.execCommand("copy");
+                    url_copiar.style.display = "none";
+                  });
+
+                  finalizar_boton_descargar.addEventListener("click", () => {
+                    invokeSaveAsDialog(blob);
+                  });
                 });
 
               return traer_gif;
@@ -163,7 +199,20 @@ function crear_gifs() {
 cancelar_texto.addEventListener("click", () => {
   location.reload();
 });
+
+cerrar_1.addEventListener("click", () => {
+  location.reload();
+});
+
+cerrar_2.addEventListener("click", () => {
+  location.reload();
+});
+
+finalizar_listo.addEventListener("click", () => {
+  location.reload();
+});
 //////////////////////////
+
 let mostrar_mis_gif_creados = () => {
   for (let i = 0; i < localStorage.length; i++) {
     let clave = localStorage.key(i);
