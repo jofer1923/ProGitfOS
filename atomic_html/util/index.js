@@ -44,7 +44,7 @@ function cargaDelBody() {
 // ENDPOINT SUGERENCIAS
 async function getSugerencias() {
   const Sugerencias = await fetch(
-    "http://api.giphy.com/v1/gifs/trending" +
+    "https://api.giphy.com/v1/gifs/trending" +
       "?api_key=" +
       "ZsyimjTGoeAs3gjOJLqCRkHfccc4tcEv" +
       "&limit=14"
@@ -167,7 +167,7 @@ let search = () => {
 //ENDPOINT TENDENCIAS
 function getTendencias(search) {
   const URL_TENDENCIA =
-    "http://api.giphy.com/v1/gifs/search?q=" +
+    "https://api.giphy.com/v1/gifs/search?q=" +
     search +
     "&api_key=" +
     "ZsyimjTGoeAs3gjOJLqCRkHfccc4tcEv" +
@@ -213,7 +213,7 @@ function autocompletarBusqueda() {
 
   function autocompletar(search) {
     const URL_SUGERENCIAS =
-      "http://api.giphy.com/v1/gifs/search/tags?q=" +
+      "https://api.giphy.com/v1/gifs/search/tags?q=" +
       search +
       "&api_key=" +
       "ZsyimjTGoeAs3gjOJLqCRkHfccc4tcEv" +
