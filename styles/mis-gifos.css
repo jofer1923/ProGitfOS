@@ -1,4 +1,3 @@
-/* @import "./sass/components/atomos_mis-gifos"; */
 html {
   font-size: 1rem;
 }
@@ -350,7 +349,6 @@ html {
   position: relative;
 }
 
-/* @import "./sass/components/atomos_mis-guifos_oscuros"; */
 .header__logo {
   margin-left: 60px;
   margin-top: 35px;

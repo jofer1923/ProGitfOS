@@ -28,8 +28,9 @@ let img_finalizar = document.getElementById("img_finalizar");
 let finalizar_listo = document.getElementById("finalizar_listo");
 let cerra_1 = document.getElementById("cerrar_1");
 let cerra_2 = document.getElementById("cerrar_2");
-////////////////////////////
-/* CLASE GIPHY CON FUNCIONES PARA ENVIAR EL GIF */
+////////////////////////////////////////////////////
+
+/* CLASE GIPHY CON FUNCIONES Y ENVIO DEL GIF */
 class giphy {
   async obtener(apiKey, formaData) {
     let cors = { method: "POST", body: formaData, json: true };
@@ -45,7 +46,7 @@ class giphy {
     return respuesta;
   }
 }
-///////////////////
+/////////////////////////////////////////////////////
 // CÓDIGO PRINCIPAL
 mostrar_camara.style.display = "none";
 capturar.textContent = "Capturar";
@@ -64,7 +65,7 @@ contenedor__boton_2.addEventListener("click", () => {
   mostrar_camara.style.display = "";
   crear_gifs_seccion.style.display = "none";
 });
-/* INICIAR LA GRABACIÓN DE LA CAMÁRA */
+/* INICIAR GRABACIÓN DE LA CAM */
 capturar.addEventListener("click", () => {
   crear_gifs();
   capturar.textContent = "Creando Guifo";
@@ -74,7 +75,7 @@ capturar.addEventListener("click", () => {
     contenedor_listo.style.display = "";
   }, 1000);
 });
-///////////////////
+/////////////////////////////////////////////////
 repetir_captura.addEventListener("click", () => {
   crear_gifs();
   finalizar_botones.style.display = "none";
@@ -224,7 +225,8 @@ cerrar_2.addEventListener("click", () => {
 finalizar_listo.addEventListener("click", () => {
   location.reload();
 });
-//////////////////////////
+
+///////////////////////////////////////////////////////////////
 
 let mostrar_mis_gif_creados = () => {
   for (let i = 0; i < localStorage.length; i++) {
